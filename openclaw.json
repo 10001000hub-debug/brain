@@ -1,0 +1,128 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.2.9",
+    "lastTouchedAt": "2026-02-13T18:00:00.000Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-02-13T16:16:13.643Z",
+    "lastRunVersion": "2026.2.9",
+    "lastRunCommand": "configure",
+    "lastRunMode": "local"
+  },
+  "auth": {
+    "profiles": {
+      "google:default": {
+        "provider": "google",
+        "mode": "api_key"
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "google/gemini-3-pro-preview"
+      },
+      "models": {
+        "google-gemini-cli/gemini-2.5-pro": {},
+        "ollama/llama3": {
+          "provider": "ollama",
+          "baseUrl": "http://100.64.180.83:11434/v1",
+          "contextWindow": 8192
+        }
+      },
+      "workspace": "/root/.openclaw/workspace",
+      "compaction": {
+        "mode": "safeguard"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    },
+    "list": [
+      {
+        "id": "main",
+        "model": "google/gemini-3-pro-preview",
+        "subagents": {
+          "allowAgents": ["local"]
+        }
+      },
+      {
+        "id": "local",
+        "model": "ollama/llama3",
+        "provider": "ollama"
+      }
+    ]
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true,
+        "apiKey": "__OPENCLAW_REDACTED__"
+      },
+      "fetch": {
+        "enabled": true"
+      }
+    },
+    "agentToAgent": {
+      "enabled": true,
+      "allow": ["sessions_spawn"]
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions"
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true
+  },
+  "channels": {
+    "line": {
+      "channelAccessToken": "__OPENCLAW_REDACTED__",
+      "channelSecret": "__OPENCLAW_REDACTED__",
+      "enabled": false,
+      "dmPolicy": "pairing",
+      "webhookPath": "",
+      "responsePrefix": "32TJYA8D"
+    }
+  },
+  "gateway": {
+    "port": 18789,
+    "mode": "local",
+    "bind": "tailnet",
+    "auth": {
+      "mode": "token",
+      "token": "__OPENCLAW_REDACTED__"
+    },
+    "tailscale": {
+      "mode": "serve",
+      "resetOnExit": false
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "calendar.add",
+        "contacts.add",
+        "reminders.add"
+      ]
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "google-gemini-cli-auth": {
+        "enabled": false
+      },
+      "line": {
+        "enabled": true
+      }
+    }
+  }
+}

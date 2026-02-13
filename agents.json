@@ -1,0 +1,8 @@
+{
+  "local": {
+    "model": "llama3.1:latest",
+    "endpoint": "http://100.64.180.83:11434/v1",
+    "system": "You are a helpful assistant running on a local GPU (GTX 1070). Answer concisely.",
+    "contextlen": 4096
+  }
+}
